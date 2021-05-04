@@ -5,7 +5,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "prestart": "tailwindcss build src/assets/tailwind.css -o src/assets/tailwind.compiled.css",
     "start": "webpack serve --config webpack.dev.js --open",
+    "prebuild": "tailwindcss build src/assets/tailwind.css -o src/assets/tailwind.compiled.css",
     "build": "webpack --config webpack.prod.js",
     "lint": "run-p -l lint:*",
     "lint:tsc": "tsc --noEmit",
