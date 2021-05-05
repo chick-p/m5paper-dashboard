@@ -2,3 +2,4 @@ node_modules/
 dist/
 
 tailwind.compiled.css
+.env
