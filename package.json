@@ -6,6 +6,9 @@
   "repository": "git@github.com:chick-p/m5paper.git",
   "author": "chick-p <chick.p.1120@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "lint": "lerna run lint"
+  },
   "workspaces": [
     "dashboard"
   ],
