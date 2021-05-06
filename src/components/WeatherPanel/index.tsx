@@ -12,7 +12,7 @@ const Component: React.FC = () => {
   const [error, setError] = useState(null);
   useEffect(() => {
     fetch(
-      `http://api.openweathermap.org/data/2.5/onecall?lat=${WEATHER_LATITUDE}&lon=${WEATHER_LONGITUDE}&exclude=hourly,minutely,alerts&units=metric&lang=ja&appid=${WEATHER_APP_ID}`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${WEATHER_LATITUDE}&lon=${WEATHER_LONGITUDE}&exclude=hourly,minutely,alerts&units=metric&lang=ja&appid=${WEATHER_APP_ID}`
     )
       .then((res) => res.json())
       .then(
