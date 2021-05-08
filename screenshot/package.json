@@ -13,6 +13,7 @@
     "fix:eslint": "yarn lint:eslint --fix"
   },
   "dependencies": {
+    "aws-sdk": "^2.903.0",
     "chrome-aws-lambda": "^9.1.0",
     "source-map-support": "^0.5.19"
   },
