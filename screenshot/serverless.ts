@@ -9,7 +9,6 @@ const serverlessConfiguration: AWS = {
       includeModules: true,
     },
   },
-  // Add the serverless-webpack plugin
   plugins: ["serverless-webpack"],
   provider: {
     name: "aws",
@@ -20,19 +19,21 @@ const serverlessConfiguration: AWS = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
+      S3_BUCKET_NAME: "${env:S3_BUCKET_NAME}",
+      URL: "${env:URL}",
     },
+    iamRoleStatements: [
+      {
+        Effect: "Allow",
+        Action: ["s3:PutObject", "s3:PutObjectAcl"],
+        Resource: ["arn:aws:s3:::${env:S3_BUCKET_NAME}/*"],
+      },
+    ],
   },
   functions: {
-    hello: {
-      handler: "handler.hello",
-      events: [
-        {
-          http: {
-            method: "get",
-            path: "hello",
-          },
-        },
-      ],
+    screenshot: {
+      handler: "handler.screenshot",
+      timeout: 30,
     },
   },
 };
