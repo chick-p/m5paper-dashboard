@@ -1,5 +1,6 @@
 import "source-map-support/register";
 import chromium from "chrome-aws-lambda";
+import jimp from "jimp";
 import AWS from "aws-sdk";
 
 const { S3_BUCKET_NAME, URL } = process.env;
@@ -21,14 +22,17 @@ export const screenshot = async (): Promise<void> => {
     await page.goto(URL, {
       waitUntil: "networkidle0",
     });
-    const data = (await page.screenshot({ fullPage: true })) as Buffer;
+    const buffer = (await page.screenshot({ fullPage: true })) as Buffer;
     await browser.close();
+    const rotatedBuffer = await (await jimp.read(buffer))
+      .rotate(90)
+      .getBufferAsync(jimp.MIME_PNG);
     const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
     const resp = await s3
       .upload({
         Bucket: S3_BUCKET_NAME,
         Key: "m5paper.png",
-        Body: data,
+        Body: rotatedBuffer,
         ContentType: "image/png",
         ACL: "public-read",
       })
