@@ -1,0 +1,40 @@
+{
+  "name": "screenshot",
+  "version": "1.0.0",
+  "description": "Serverless webpack example using Typescript",
+  "main": "handler.js",
+  "scripts": {
+    "lint": "run-p -l lint:*",
+    "lint:tsc": "tsc --noEmit",
+    "lint:prettier": "prettier --check src",
+    "lint:eslint": "eslint --ext .ts",
+    "fix": "run-s -l fix:eslint fix:prettier",
+    "fix:prettier": "prettier -w .",
+    "fix:eslint": "yarn lint:eslint --fix"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.903.0",
+    "chrome-aws-lambda": "^9.1.0",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@serverless/typescript": "^2.12.0",
+    "@types/aws-lambda": "^8.10.64",
+    "@types/node": "^14.14.6",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "fork-ts-checker-webpack-plugin": "^6.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
+    "serverless-webpack": "^5.2.0",
+    "ts-loader": "^8.0.10",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5",
+    "webpack": "^5.4.0",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "license": "MIT"
+}
