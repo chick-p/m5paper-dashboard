@@ -34,6 +34,11 @@ const serverlessConfiguration: AWS = {
     screenshot: {
       handler: "handler.screenshot",
       timeout: 30,
+      events: [
+        {
+          schedule: "cron(* 6,12,18 * * ? *)",
+        },
+      ],
     },
   },
 };
