@@ -18,7 +18,7 @@ export const screenshot = async (): Promise<void> => {
       headless: chromium.headless,
     });
     const page = await browser.newPage();
-    await page.setViewport({ width: 1280, height: 800 });
+    await page.setViewport({ width: 960, height: 540 });
     await page.goto(URL, {
       waitUntil: "networkidle0",
     });
