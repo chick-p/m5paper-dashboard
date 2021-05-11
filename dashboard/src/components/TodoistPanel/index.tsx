@@ -31,7 +31,7 @@ const Component: React.FC = () => {
               id: v.id,
               name: v.content,
               projectId: v.project_id,
-              due
+              due,
             };
           });
         setTasks(todayTasks);
@@ -50,13 +50,11 @@ const Component: React.FC = () => {
       <div className="flex space-x-2 text-gray-700 text-xl">
         <ul className="list-disc list-inside">
           {tasks.length > 0
-            ? tasks.slice(0, 4).map((task) => (
-                <li key={task.id}>
-                  {task.name}
-                </li>
-              ))
+            ? tasks
+                .slice(0, 4)
+                .map((task) => <li key={task.id}>{task.name}</li>)
             : "Enjoy Today!"}
-            {tasks.length > 5 ? "..." : ""}
+          {tasks.length > 5 ? "..." : ""}
         </ul>
       </div>
     </div>
