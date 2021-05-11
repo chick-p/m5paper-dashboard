@@ -50,15 +50,15 @@ const Component: React.FC = () => {
       pop,
     } = weather;
     return (
-      <div className="relative bg-white py-6 px-6 rounded-3xl border-2 border-gray-500 w-80 my-4">
-        <div className="flex text-center space-x-2 text-gray-700 text-xl">
-          <p className="font-semibold my-2">Today</p>
+      <div className="relative col-start-2 col-span-2 bg-white py-6 px-6 rounded-3xl border-2 border-gray-500 my-4 align-text-top">
+        <div className="flex space-x-2 text-gray-700 text-2xl">
+          <p className="font-semibold mb-2">Today</p>
         </div>
-        <div className="flex text-center space-x-2 text-gray-700 text-xl">
+        <div className="flex space-x-2 text-gray-700 text-2xl">
           <WeatherIcon icon={icon} className="h-10 w-10" />
           <p className="font-semibold my-2">{round(currentTemperature)} ℃</p>
         </div>
-        <div className="flex space-x-2 text-gray-700 text-base">
+        <div className="flex space-x-2 text-gray-700 text-xl">
           <div className="flex-grow">
             <p className="font-semibold my-2">
               {round(maxTemperature)} ℃ / {round(minTemperature)} ℃
@@ -66,7 +66,7 @@ const Component: React.FC = () => {
           </div>
           <div className="flex-grow">
             <div className="flex">
-              <IoUmbrellaSharp className="h-10 w-5 mr-1" />
+              <IoUmbrellaSharp className="h-10 w-5 mr-2" />
               <p className="font-semibold my-2">{round(pop, 0)} %</p>
             </div>
           </div>
