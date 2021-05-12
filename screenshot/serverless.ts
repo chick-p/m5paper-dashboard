@@ -21,6 +21,7 @@ const serverlessConfiguration: AWS = {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
       S3_BUCKET_NAME: "${env:S3_BUCKET_NAME}",
       URL: "${env:URL}",
+      FONT_URL: "${env:FONT_URL}"
     },
     iamRoleStatements: [
       {
