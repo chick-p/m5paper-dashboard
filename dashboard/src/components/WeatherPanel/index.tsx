@@ -67,7 +67,7 @@ const Component: React.FC = () => {
           <div className="flex-grow">
             <div className="flex">
               <IoUmbrellaSharp className="h-10 w-5 mr-2" />
-              <p className="font-semibold my-2">{round(pop, 0)} %</p>
+              <p className="font-semibold my-2">{round(pop * 100, 0)} %</p>
             </div>
           </div>
         </div>
