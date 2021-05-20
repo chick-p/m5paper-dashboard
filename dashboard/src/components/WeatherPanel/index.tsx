@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { IoUmbrellaSharp } from "react-icons/io5";
+import { toDate } from "date-fns";
 
 import { WeatherIcon } from "./WeatherIcon";
-import { Weather } from "../../types/weather";
+import { OpenWeatherMapMetrics, Weather } from "../../types/weather";
 import { round } from "../../builders/index";
 
 const { WEATHER_APP_ID, WEATHER_LATITUDE, WEATHER_LONGITUDE } = process.env;
@@ -19,7 +20,11 @@ const Component: React.FC = () => {
         (result) => {
           const { current, daily } = result;
           const { description, icon } = current.weather[0];
-          const { pop, temp: dailyTemp } = daily[0];
+          const currentTime = new Date().getTime();
+          const day = (daily as Array<OpenWeatherMapMetrics>).find(
+            (d: OpenWeatherMapMetrics) => d.dt * 1000 <= currentTime
+          );
+          const { pop, temp: dailyTemp } = day;
           setWeather({
             currentTemperature: current.temp,
             maxTemperature: dailyTemp.max,
@@ -67,7 +72,7 @@ const Component: React.FC = () => {
           <div className="flex-grow">
             <div className="flex">
               <IoUmbrellaSharp className="h-10 w-5 mr-2" />
-              <p className="font-semibold my-2">{round(pop, 0)} %</p>
+              <p className="font-semibold my-2">{round(pop * 100, 0)} %</p>
             </div>
           </div>
         </div>

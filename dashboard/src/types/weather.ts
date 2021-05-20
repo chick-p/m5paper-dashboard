@@ -27,3 +27,21 @@ export type Icon =
   | "13n"
   | "50d"
   | "50n";
+
+type OpenWeatherMapWeather = {
+  description: number;
+  icon: Icon;
+}
+
+type OpenWeatherMapTemp = {
+  day: number,
+  min: number;
+  max: number;
+}
+
+export type OpenWeatherMapMetrics = {
+  dt: number;
+  temp: OpenWeatherMapTemp;
+  pop: number;
+  weather: Array<OpenWeatherMapWeather>
+}
