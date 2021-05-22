@@ -4,6 +4,14 @@
   "private": true,
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "lint": "run-p -l lint:*",
+    "lint:prettier": "prettier --check src",
+    "lint:eslint": "eslint --ext .ts",
+    "fix": "run-s -l fix:eslint fix:prettier",
+    "fix:prettier": "prettier -w src",
+    "fix:eslint": "yarn lint:eslint --fix"
+  },
   "devDependencies": {
     "@types/google-apps-script": "^1.0.33"
   }
