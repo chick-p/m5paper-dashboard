@@ -10,7 +10,8 @@
     "lint": "lerna run lint"
   },
   "workspaces": [
-    "dashboard"
+    "dashboard",
+    "gas-gcal-today"
   ],
   "devDependencies": {
     "lerna": "^4.0.0"
