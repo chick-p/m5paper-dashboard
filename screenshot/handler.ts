@@ -3,14 +3,12 @@ import chromium from "chrome-aws-lambda";
 import jimp from "jimp";
 import AWS from "aws-sdk";
 
-const { S3_BUCKET_NAME, URL } = process.env;
+const { S3_BUCKET_NAME, URL, FONT_URL } = process.env;
 
 export const screenshot = async (): Promise<void> => {
   AWS.config.update({ region: process.env.AWS_REGION || "ap-northeast-1" });
   try {
-    await chromium.font(
-      "https://raw.githack.com/googlefonts/noto-cjk/main/Sans/OTF/Japanese/NotoSansCJKjp-Regular.otf"
-    );
+    await chromium.font(FONT_URL);
     const browser = await chromium.puppeteer.launch({
       args: chromium.args,
       defaultViewport: chromium.defaultViewport,
